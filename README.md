@@ -1,30 +1,32 @@
 Customer Sales Dataset — Data Cleaning and Preprocessing
-Project Overview
+📌 Project Overview
 
-This project focuses on cleaning and preprocessing a messy customer sales dataset using Microsoft Excel. The dataset, messy_customer_sales_dataset.csv, contained inconsistent text values, missing information, duplicate records, and formatting issues.
+This project focuses on cleaning and preprocessing a messy customer sales dataset using Microsoft Excel as part of an internship project at Swynex.
 
-The goal was to improve data quality, standardize values, handle missing entries, and prepare a cleaner dataset for further analysis and visualization.
+The original dataset, messy_customer_sales_dataset.csv, contained missing values, duplicate records, inconsistent text entries, and formatting issues.
 
-Project Details
-Item	Description
+The objective was to improve data quality, standardize inconsistent values, handle missing data, and prepare a cleaned dataset for further analysis and visualization.
+
+📋 Project Information
+Category	Details
 Project Name	Customer Sales Data Cleaning
 Organization	Swynex
 Project Type	Internship Project
 Tool Used	Microsoft Excel
 Input Format	CSV
 Output Format	Excel Workbook
-Main Tasks	Data cleaning, standardization, missing value handling, duplicate removal
-Objectives
-Inspect the dataset and identify data quality issues.
+Project Focus	Data Cleaning and Preprocessing
+🎯 Project Objectives
+Identify data quality issues in the original dataset.
 Detect and remove duplicate records.
-Handle missing values using defined rules.
+Handle missing values using conditional formulas.
 Standardize inconsistent text and categorical values.
-Check phone number lengths for consistency.
+Inspect phone number lengths for consistency.
 Apply appropriate date and currency formatting.
-Create a cleaned dataset suitable for further analysis.
-Dataset Description
+Prepare a cleaned dataset for further analysis and reporting.
+📂 Dataset Description
 
-The dataset contains customer-related and sales-related information, including:
+The dataset contains customer and sales-related information across the following columns:
 
 Customer ID
 Gender
@@ -37,176 +39,194 @@ Feedback Score
 Email
 Phone Number
 Country
-
-The input file was provided as a CSV dataset for the cleaning exercise. Add the original dataset's public source and license here if available.
-
 Data Quality Issues Identified
 
-The initial inspection identified several data quality problems:
+During the initial inspection, the following issues were identified:
 
 Missing customer IDs and other blank values.
 Duplicate customer IDs or records.
 Inconsistent gender entries, such as F, f, Female, m, and Male.
 Age values containing decimal portions, such as 51.0.
 Inconsistent spacing and capitalization in City and Country values.
-Missing purchase dates and purchase amounts.
-Missing feedback scores.
-Phone numbers with different character lengths.
-Inconsistent or general number formatting in date and currency columns.
-Data Cleaning Process
+Missing purchase dates, purchase amounts, and feedback scores.
+Phone numbers with inconsistent character lengths.
+Inconsistent date and currency formatting.
+🧹 Data Cleaning Process
 1. Initial Inspection and Preparation
-Imported the CSV file into Microsoft Excel.
-Created a separate working copy to preserve the original dataset.
-Adjusted column widths for readability.
-Reviewed rows, columns, and field names.
-Applied filters to inspect individual columns.
+Imported the CSV dataset into Microsoft Excel.
+Created a separate working copy to preserve the original data.
+Adjusted column widths for better readability.
+Reviewed the dataset structure, rows, and columns.
+Applied filters to inspect individual columns and identify data quality issues.
 2. Duplicate Detection and Removal
 Used Conditional Formatting to highlight duplicate customer ID values.
-Filtered the highlighted values to inspect the corresponding records.
-Used Data → Remove Duplicates to remove the identified duplicate records.
+Applied filters to inspect the identified duplicates.
+Used Data → Remove Duplicates to remove the selected duplicate records.
 
-Validation consideration: Duplicate customer IDs do not always mean that entire records are duplicates. Customer IDs and complete duplicate records should be validated separately where appropriate.
+Note: Duplicate customer IDs do not necessarily indicate duplicate records. The appropriate business key should be verified before removing records.
 
 3. Customer ID Cleaning
-Identified blank customer ID values.
-Used an IF() formula to replace missing IDs with Unknown_ID.
-Copied the formula results and pasted them as values to create a static output column.
+Identified blank customer ID values using filters.
+Used the IF() function to replace missing IDs with Unknown_ID.
+Copied the formula results and used Paste Special → Values to create static values.
 4. Gender Standardization
-Identified inconsistent gender labels and missing entries using filters.
+Identified inconsistent gender values and missing entries.
 Used TRIM() to remove extra spaces.
-Used PROPER() to standardize capitalization.
+Used PROPER() to standardize text capitalization.
 Used Find & Replace to map inconsistent labels to standard categories.
 Replaced missing gender values with Unknown.
-Converted formula results to static values.
+Converted formula results into static values.
 5. Age Cleaning
 Identified age values containing decimal portions, such as 51.0.
-Used Text to Columns with the period (.) as a delimiter to separate the decimal portion.
+Used Text to Columns with a period (.) as the delimiter to separate decimal portions.
 Handled missing age values using an Unknown placeholder.
-Copied the cleaned results as values.
+Copied the cleaned results as static values.
 
-Validation consideration: Text to Columns can split a value into separate fields. The resulting age values should be checked to ensure that the integer age was retained correctly and that valid age ranges are respected.
+Note: The resulting age values should be checked to ensure that valid ages were retained correctly and no information was lost during the conversion.
 
 6. City Standardization
-Inspected blank and inconsistent City values.
-Used TRIM() and PROPER() to normalize spacing and capitalization.
+Inspected the City column for missing values and inconsistent text.
+Used TRIM() and PROPER() to standardize spacing and capitalization.
 Replaced missing City values with Unknown.
-Converted the results into static values.
+Converted formula results into static values.
 7. Date Cleaning
 
 Signup Date
 
-Checked for blank values and reviewed the column's formatting.
+Checked for blank values using filters.
+Reviewed the existing date formatting.
 Applied a consistent date display format.
 
 Last Purchase Date
 
-Identified missing values using filters.
+Identified missing date values.
 Replaced missing values with an Unknown placeholder.
 Standardized the date display format.
-Converted formula results to static values.
+Converted formula results into static values.
 
-Validation consideration: A column containing both dates and text placeholders such as Unknown should be treated as mixed-type data. For analysis, consider retaining true date values and representing missing dates as blank or null in the analytical dataset.
+Note: For further analysis, actual dates should ideally remain date values, while missing dates should be represented as blank or null rather than text placeholders.
 
 8. Purchase Amount Cleaning
-Identified missing purchase amounts.
-Used an IF() formula to apply the selected missing-value rule.
-Converted the formula output to static values.
-Applied currency formatting to the cleaned numeric values.
+Identified missing Purchase Amount values.
+Used an IF() formula to apply the selected missing-value treatment.
+Converted formula results into static values.
+Applied currency formatting to the numeric values.
 
-Validation consideration: Missing purchase amounts should not automatically be interpreted as zero unless that meaning is justified by the dataset. The chosen treatment should be documented before calculating sales totals or averages.
+Note: Missing purchase amounts should not automatically be interpreted as zero unless this treatment is appropriate for the dataset.
 
 9. Feedback Score Cleaning
-Identified blank feedback scores.
-Used an IF() formula to replace missing scores with 0.
-Copied the resulting values into a static column.
+Identified blank Feedback Score values.
+Used an IF() formula to replace missing values with 0.
+Converted the resulting values into static values.
 
-Validation consideration: A zero can represent a genuine score or a missing value. Confirm the dataset's scoring rules before using zero as a replacement.
+Note: A score of 0 may represent either a genuine score or missing information. This distinction should be considered during analysis.
 
 10. Email Review
 Inspected the Email column using filters.
 No blank email values were identified during the review.
 
-This check addressed missingness only; email format validity and uniqueness were not established by that check.
+The check focused on missing values; email format validity and uniqueness were not verified.
 
 11. Phone Number Cleaning
-Used LEN() to measure the character length of each phone number.
-Identified phone numbers with inconsistent lengths, including values containing 7, 8, 10, and 11 characters.
+Used the LEN() function to measure phone number character lengths.
+Identified inconsistent lengths, including values containing 7, 8, 10, and 11 characters.
 Applied a conditional rule based on the expected 10-character phone number format.
-Converted the formula results to static values.
+Copied formula results as static values.
 
-Validation consideration: A length of 10 characters does not prove that a phone number is valid. Values with other lengths should be flagged and investigated rather than automatically modified without a documented rule. Country codes, leading zeros, and non-numeric characters should also be considered.
+Note: Phone number length alone does not confirm validity. Values with unexpected lengths should be reviewed, considering country codes, leading zeros, and the applicable phone numbering rules.
 
 12. Country Standardization
-Identified missing Country values and inconsistent labels.
-Used TRIM() and PROPER() to normalize text formatting.
-Standardized variations such as IND, Ind, India, and INDIA to India.
+Identified missing values and inconsistent country labels.
+Used TRIM() and PROPER() to standardize text formatting.
+Used Find & Replace to standardize variations such as IND, Ind, India, and INDIA to India.
 Replaced missing Country values with Unknown.
-Converted the cleaned output to static values.
+Converted the cleaned results into static values.
 13. Final Dataset Preparation
 Created a separate final working sheet.
 Removed unnecessary columns from the final output.
-Saved the workbook containing the processed dataset.
-Excel Functions and Features
-Function or Feature	Purpose
+Saved the processed dataset in the Excel workbook.
+🛠️ Excel Functions and Features Used
+Function / Feature	Purpose
 IF()	Apply conditional rules and handle missing values
-TRIM()	Remove extra spaces
+TRIM()	Remove unnecessary spaces
 PROPER()	Standardize text capitalization
 LEN()	Check phone number character lengths
-Find & Replace	Standardize inconsistent categories
+Find & Replace	Standardize inconsistent text values
 Conditional Formatting	Highlight duplicate values
 Filters	Inspect blanks and inconsistent entries
-Remove Duplicates	Remove duplicate records
+Remove Duplicates	Remove identified duplicate records
 Text to Columns	Separate decimal portions from age values
-Paste Special → Values	Convert formulas into static values
+Paste Special → Values	Convert formula results into static values
 Number Formatting	Standardize date and currency display
-Final Output
+📊 Missing Value Treatment
 
-The final working sheet was prepared with selected columns and standardized values for subsequent analysis.
+The following treatments were applied during the cleaning process:
+
+Column	Cleaning Treatment
+Customer ID	Replaced missing values with Unknown_ID
+Gender	Replaced missing values with Unknown
+Age	Replaced missing values with Unknown
+City	Replaced missing values with Unknown
+Last Purchase Date	Replaced missing values with Unknown
+Purchase Amount	Applied a conditional formula to handle missing values
+Feedback Score	Replaced missing values with 0
+Country	Replaced missing values with Unknown
+
+Signup Date and Email were inspected, and no blank values were identified during the review.
+
+✅ Final Output
+
+The final working sheet was prepared with selected columns and standardized values for further analysis.
 
 The cleaning process focused on:
 
-More consistent text categories.
-Explicit handling of missing values.
-Removal of identified duplicate records.
-Improved date and currency presentation.
-Identification of inconsistent phone number lengths.
-A separate final dataset for further processing.
+Improving consistency across text and categorical fields.
+Handling missing values using defined rules.
+Removing identified duplicate records.
+Standardizing date and currency presentation.
+Inspecting inconsistent phone number lengths.
+Preparing a separate cleaned dataset for further processing.
 
-The results should undergo final validation before being used for business decisions or reporting.
+Final validation is recommended before using the dataset for business reporting or decision-making.
 
-Limitations and Future Improvements
-Verify whether duplicate records were removed using the correct business key.
-Confirm that Unknown_ID placeholders do not create misleading customer-level counts.
-Preserve missing-value indicators where zero or text placeholders could change analytical results.
-Validate phone numbers against an appropriate country-specific rule.
-Ensure dates and purchase amounts use consistent data types.
-Compare the original and final row counts and record the number of duplicates removed.
-Add before-and-after quality checks and summary statistics.
-Use Python or Power BI in a future iteration if automated or repeatable processing is required.
-Repository Structure
+🚀 Limitations and Future Improvements
 
-A suggested repository structure is:
+Potential improvements for future iterations include:
 
+Verifying duplicate removal using the correct business key.
+Ensuring placeholder customer IDs do not affect customer counts.
+Preserving missing-value indicators where zero could be misleading.
+Validating phone numbers against appropriate numbering rules.
+Ensuring dates and purchase amounts have consistent data types.
+Recording original and final row counts and the number of duplicates removed.
+Adding before-and-after data quality checks and summary statistics.
+Exploring Python or Power BI for more repeatable cleaning and analysis workflows.
+📁 Suggested Repository Structure
 customer-sales-data-cleaning/
+│
 ├── README.md
+│
 ├── data/
 │   └── messy_customer_sales_dataset.csv
+│
 ├── output/
 │   └── cleaned_customer_sales_dataset.xlsx
+│
 └── documentation/
     └── cleaning_summary.xlsx
 
 
-Adjust the filenames and folders to match the files actually uploaded to the repository. If the public dataset has redistribution restrictions, provide its source link rather than uploading another copy.
+Update the filenames and folder structure to match the files actually uploaded to the repository. If the dataset has redistribution restrictions, link to the original source instead of uploading another copy.
 
-Conclusion
+📝 Conclusion
 
-This project demonstrates a practical Excel-based data cleaning workflow, including data inspection, duplicate detection, missing-value handling, text standardization, formatting, and preparation of a final working dataset.
+This project demonstrates a practical data cleaning and preprocessing workflow using Microsoft Excel.
 
-It provided hands-on experience in improving dataset consistency and preparing customer sales data for future analysis and visualization.
+Through data inspection, duplicate detection, missing-value handling, text standardization, and formatting, the project aimed to improve dataset consistency and prepare customer sales data for future analysis and visualization.
 
-Tools: Microsoft Excel
+Tools Used: Microsoft Excel
 Project Category: Data Cleaning and Preprocessing
-Organization: Swynex Internship
+Organization: Swynex
+Project Type: Internship Project
 
 <img width="860" height="326" alt="Cleanned Dataset" src="https://github.com/user-attachments/assets/fec7068b-83ba-48cf-a63f-489af1dfb95e" />
