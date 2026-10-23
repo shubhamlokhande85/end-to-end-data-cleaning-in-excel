@@ -368,16 +368,25 @@ Exploring Python or Power BI for more repeatable cleaning and analysis workflows
 📁 Suggested Repository Structure
 
 customer-sales-data-cleaning/
+
 │
+
 ├── README.md
+
 │
+
 ├── data/
+
 │   └── messy_customer_sales_dataset.csv
+
 │
-├── output/
+
 │   └── cleaned_customer_sales_dataset.xlsx
+
 │
+
 └── documentation/
+
     └── cleaning_summary.xlsx
 
 
